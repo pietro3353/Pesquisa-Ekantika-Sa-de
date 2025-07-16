@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Interesse - Rede Nacional de Pesquisa Clínica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+          --color-primary: #3A8DCD; /* Azul da área da saúde */
+          --color-secondary-brand: #2c3e50; /* Azul escuro/Chumbo */
+          
+          --color-background: #f4f7f9;
+          --color-surface: #ffffff;
+          --color-text: #2c3e50; 
+          --color-text-secondary: #5a6872;
+          
+          --color-primary-hover: #327ab8;
+          --color-primary-active: #2a689d;
+          --color-secondary: rgba(58, 141, 205, 0.1);
+          
+          --color-border: #dfe6e9;
+          --color-btn-primary-text: #ffffff;
+          
+          --color-error: #d32f2f;
+          --color-success: #388e3c;
+          --color-info: #1976d2;
+          --color-focus-ring: rgba(58, 141, 205, 0.4);
+
+          --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          --font-size-base: 16px;
+          --line-height-normal: 1.6;
+          --radius-base: 8px;
+          --radius-lg: 12px;
+          --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+          --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+          --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+          --duration-normal: 250ms;
+          --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Estilos base */
+        html {
+          font-size: var(--font-size-base);
+          font-family: var(--font-family-base);
+          line-height: var(--line-height-normal);
+          color: var(--color-text);
+          background-color: var(--color-background);
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        *, *::before, *::after {
+          box-sizing: inherit;
+        }
+
+        h1, h2, h3, h4 {
+          font-weight: 700;
+          line-height: 1.2;
+          color: var(--color-secondary-brand);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.25rem; }
+        
+        .container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+        .container-narrow {
+            max-width: 800px;
+        }
+
+        /* Gerenciamento de Páginas/Etapas */
+        .page {
+          display: none;
+          padding: 3rem 0;
+          animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+          display: block;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos de Botão */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 14px 28px;
+          border-radius: var(--radius-base);
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-standard);
+          border: 2px solid transparent;
+          text-decoration: none;
+          width: 100%; 
+        }
+        .btn i {
+            margin-right: 8px;
+        }
+        .btn.btn-next i, .btn.btn-start i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        .btn--primary {
+          background-color: var(--color-primary);
+          color: var(--color-btn-primary-text);
+          border-color: var(--color-primary);
+        }
+        .btn--primary:hover {
+          background-color: var(--color-primary-hover);
+          border-color: var(--color-primary-hover);
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-md);
+        }
+        .btn--outline {
+          background-color: transparent;
+          color: var(--color-primary);
+          border-color: var(--color-primary);
+        }
+        .btn--outline:hover {
+          background-color: var(--color-primary);
+          color: var(--color-btn-primary-text);
+        }
+        .btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: none;
+        }
+        
+        @media (min-width: 768px) {
+            .btn {
+                width: auto;
+            }
+        }
+        
+        /* Página de Convite */
+        .invitation-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: left;
+        }
+        @media (min-width: 768px) {
+            .invitation-card {
+                padding: 3rem;
+            }
+        }
+        .invitation-card h2 {
+            color: var(--color-primary);
+            text-align: center;
+        }
+        .invitation-card p, .invitation-card li {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .invitation-card .signatures {
+            margin-top: 2rem;
+            font-weight: bold;
+        }
+        .invitation-card .actions {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+
+        /* Página de Apresentação - Estilo Hero */
+        .hero-section {
+            background: linear-gradient(170deg, #f7f9ff 0%, #f4f7f9 100%);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+        }
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (min-width: 992px) {
+            .hero-text {
+                align-items: flex-start;
+            }
+        }
+        .hero-text h1 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .hero-features {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        @media (min-width: 992px) {
+            .hero-features {
+                align-items: flex-start;
+            }
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .feature-item i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: none;
+        }
+        @media (min-width: 992px) {
+            .hero-visual {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .visual-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(58, 141, 205, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.4s var(--ease-standard);
+        }
+        .visual-card:hover {
+            transform: translateY(-10px) scale(1.05) !important;
+            z-index: 10;
+        }
+        .visual-card i {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        .visual-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-secondary-brand);
+            margin: 0;
+        }
+        .card-1 {
+            width: 180px;
+            height: 180px;
+            transform: rotate(-15deg) translate(-80px, -120px);
+            z-index: 1;
+        }
+        .card-2 {
+            width: 220px;
+            height: 220px;
+            transform: rotate(5deg);
+            z-index: 2;
+        }
+        .card-3 {
+            width: 160px;
+            height: 160px;
+            transform: rotate(12deg) translate(120px, 100px);
+            z-index: 1;
+        }
+
+        /* Estilos do Formulário */
+        .form-container {
+          background: var(--color-surface);
+          padding: 2.5rem;
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-md);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        
+        .instructions-section {
+            background-color: var(--color-secondary);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--color-primary);
+        }
+        .instructions-section h3 {
+            margin-top: 0;
+            color: var(--color-secondary-brand);
+        }
+        .instructions-section ul {
+            padding-left: 20px;
+            margin: 0;
+            color: var(--color-text-secondary);
+        }
+
+        .progress-header {
+            margin-bottom: 2rem;
+        }
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .progress-bar-container {
+            background-color: var(--color-secondary);
+            border-radius: 999px;
+            height: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background-color: var(--color-primary);
+            height: 100%;
+            transition: width 0.4s ease;
+        }
+
+        .form-section {
+          margin-bottom: 2.5rem;
+          padding-bottom: 1.5rem;
+          border-bottom: 1px solid var(--color-border);
+        }
+        .form-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .form-section h2 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+        .form-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        @media(min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group--full {
+          grid-column: 1 / -1;
+        }
+        .form-label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          font-size: 0.95rem;
+        }
+        .form-label .required-star {
+            color: var(--color-error);
+        }
+        .form-control, select.form-control, textarea.form-control {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-base);
+          background-color: var(--color-background);
+          color: var(--color-text);
+          transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-control:focus {
+          outline: none;
+          border-color: var(--color-primary);
+          box-shadow: 0 0 0 3px var(--color-focus-ring);
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Opções de Radio e Checkbox */
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .radio-option, .checkbox-option {
+            background-color: var(--color-background);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-border);
+            transition: all 0.2s ease;
+        }
+        .radio-option label, .checkbox-option label {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+        }
+        .radio-option:hover, .checkbox-option:hover {
+            border-color: var(--color-primary);
+            background-color: var(--color-secondary);
+        }
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            margin-right: 12px;
+            accent-color: var(--color-primary);
+            width: 1.2em;
+            height: 1.2em;
+        }
+        .other-input-container {
+            margin-top: 0.75rem;
+            display: none;
+        }
+        .other-input-container.visible {
+            display: block;
+        }
+
+        /* Navegação do formulário */
+        .form-navigation {
+          display: flex;
+          flex-direction: column-reverse;
+          gap: 1rem;
+          margin-top: 2.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--color-border);
+        }
+        @media (min-width: 768px) {
+            .form-navigation {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        /* Página de Confirmação/Próximos Passos */
+        .final-page-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: left;
+        }
+        @media (min-width: 768px) {
+            .final-page-card {
+                padding: 3rem;
+            }
+        }
+        .final-page-card h2 {
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .final-page-card h3 {
+            color: var(--color-secondary-brand);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .final-page-card p, .final-page-card li {
+            color: var(--color-text-secondary);
+        }
+        .final-page-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .final-page-card li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        .final-page-card li i {
+            color: var(--color-primary);
+            margin-right: 1rem;
+            margin-top: 5px;
+        }
+        .final-page-card .confidentiality {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--color-secondary);
+            border-left: 4px solid var(--color-primary);
+            border-radius: var(--radius-base);
+        }
+        .final-page-card .final-message {
+            text-align: center;
+            font-weight: 500;
+            margin-top: 2rem;
+        }
+
+
+        /* Notificações */
+        .notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 12px 20px;
+          border-radius: var(--radius-base);
+          color: white;
+          font-weight: 500;
+          z-index: 1000;
+          opacity: 0;
+          transform: translateX(100%);
+          transition: all 0.3s ease-in-out;
+          box-shadow: var(--shadow-lg);
+        }
+        .notification.show {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .notification.success { background-color: var(--color-success); }
+        .notification.error { background-color: var(--color-error); }
+        .notification.info { background-color: var(--color-info); }
+
+    </style>
+</head>
+<body>
+    <!-- Página de Apresentação -->
+    <section id="page-hero" class="page active">
+        <div class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Rede Nacional de Pesquisa Clínica</h1>
+                        <p class="hero-subtitle">Junte-se a uma iniciativa pioneira para democratizar o acesso à pesquisa clínica no Brasil, conectando hospitais de todos os portes em uma rede de colaboração e inovação.</p>
+                        
+                        <button class="btn btn--primary btn-start" onclick="goToStep('invitation')">
+                            Ler o Convite <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <div class="hero-features">
+                            <div class="feature-item">
+                                <i class="fas fa-handshake-angle"></i>
+                                <span>Suporte Técnico e Capacitação</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Acesso a Tratamentos Inovadores</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-network-wired"></i>
+                                <span>Fortalecimento da Medicina no Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="visual-card card-1">
+                           <i class="fas fa-microscope"></i>
+                           <h3>Pesquisa Inovadora</h3>
+                        </div>
+                        <div class="visual-card card-2">
+                           <i class="fas fa-heart-pulse"></i>
+                           <h3>Avanço para Pacientes</h3>
+                        </div>
+                         <div class="visual-card card-3">
+                           <i class="fas fa-globe-americas"></i>
+                           <h3>Colaboração Nacional</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Página de Convite -->
+    <section id="page-invitation" class="page">
+        <div class="container container-narrow">
+            <div class="invitation-card">
+                <h2>Convite à Participação – Projeto CMB & ANAHP</h2>
+                <p><strong>Prezado(a) Diretor(a),</strong></p>
+                <p>É com grande satisfação que convidamos sua instituição a integrar uma iniciativa estratégica para a criação de uma Rede Nacional de Pesquisa Clínica no Brasil. Esse projeto conta com o apoio da Confederação das Santas Casas e Hospitais Filantrópicos (CMB) e da Associação Nacional de Hospitais Privados (ANAHP).</p>
+                <p>Nosso objetivo é estruturar uma rede robusta, descentralizada e representativa de centros de pesquisa clínica em todo o território nacional, fortalecendo a participação de instituições públicas, filantrópicas e privadas na agenda científica brasileira e ampliando o acesso da população a tratamentos inovadores.</p>
+                <p>A sua instituição foi selecionada para esta primeira etapa do projeto, que consiste no preenchimento de um breve questionário de interesse e potencial, com duração estimada de 10 minutos. Este levantamento permitirá identificar hospitais que desejam participar da rede e mapear, ainda que de forma inicial, sua capacidade para integrar essa importante iniciativa.</p>
+                <p>As informações de cada instituição são confidenciais e não serão compartilhadas com outras instituições. As informações também não serão divulgadas sem a prévia autorização das instituições que preencherem o questionário.</p>
+                <p>Clique aqui para responder ao questionário: <a href="https://forms.office.com/r/kj2BATUFBP" target="_blank">https://forms.office.com/r/kj2BATUFBP</a></p>
+                <p>Contamos com sua participação para juntos construirmos um novo capítulo na história da ciência e da saúde brasileira, promovendo equidade, inovação e acesso.</p>
+                <div class="signatures">
+                    <p>Atenciosamente,</p>
+                    <p>Dr. Nelson Teich<br>
+                    Ex-Ministro da Saúde<br>
+                    Coordenador do Projeto Nacional de Pesquisa Clínica<br>
+                    Com apoio institucional da CMB e da ANAHP</p>
+                </div>
+                <div class="actions">
+                    <button class="btn btn--primary btn-start" onclick="goToStep(1)">
+                        Iniciar Questionário <i class="fas fa-file-signature"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Páginas do Formulário -->
+    <section id="page-1" class="page"></section>
+    <section id="page-2" class="page"></section>
+    <section id="page-3" class="page"></section>
+    <section id="page-4" class="page"></section>
+
+    <!-- Página de Próximos Passos -->
+    <section id="page-next-steps" class="page">
+        <div class="container container-narrow">
+            <div class="final-page-card">
+                <h2>Obrigado por seu interesse!</h2>
+                
+                <h3>PRÓXIMOS PASSOS</h3>
+                <ul>
+                    <li><i class="fas fa-envelope-circle-check"></i><div><strong>Confirmação:</strong> Você receberá um e-mail confirmando o recebimento deste questionário.</div></li>
+                    <li><i class="fas fa-magnifying-glass-chart"></i><div><strong>Análise:</strong> Todas as respostas serão analisadas em até 30 dias.</div></li>
+                    <li><i class="fas fa-bullhorn"></i><div><strong>Convite:</strong> Instituições interessadas serão convidadas para uma apresentação detalhada do projeto.</div></li>
+                    <li><i class="fas fa-file-signature"></i><div><strong>Avaliação:</strong> Um segundo questionário poderá ser enviado para avaliar a infraestrutura em maior detalhe.</div></li>
+                </ul>
+
+                <h3>CONTATO</h3>
+                <p>Para dúvidas ou informações adicionais:</p>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> E-mail: pietro.lippolis@ekantika.com.br</li>
+                    <li><i class="fas fa-phone"></i> Telefone: 11 96398-1147</li>
+                    <li><i class="fas fa-globe"></i> Website: <a href="https://ekantikasaude.com.br" target="_blank">ekantikasaude.com.br</a></li>
+                </ul>
+
+                <div class="confidentiality">
+                    <p><strong>CONFIDENCIALIDADE:</strong> Todas as informações fornecidas serão tratadas com absoluta confidencialidade e utilizadas exclusivamente para fins de estruturação da Rede Nacional de Pesquisa Clínica.</p>
+                </div>
+
+                <p class="final-message">Este projeto é uma iniciativa conjunta visando fortalecer a pesquisa clínica no Brasil e ampliar o acesso dos pacientes a tratamentos inovadores.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- ESTRUTURA DO QUESTIONÁRIO ---
+        const questionnaireStructure = [
+            {
+                title: "Identificação e Perfil",
+                sections: [
+                    {
+                        id: "s1",
+                        title: "Seção 1: Identificação Institucional",
+                        questions: [
+                            { id: "s1_nome_inst", label: "Nome da Instituição", type: "text", required: true, grid: "full" },
+                            { id: "s1_cnpj", label: "CNPJ", type: "text", required: true, grid: "full" },
+                            { id: "s1_endereco_rua", label: "Rua/Avenida", type: "text", required: true, grid: "full" },
+                            { id: "s1_endereco_num", label: "Número", type: "text", required: true },
+                            { id: "s1_endereco_comp", label: "Complemento", type: "text" },
+                            { id: "s1_endereco_bairro", label: "Bairro", type: "text", required: true },
+                            { id: "s1_endereco_cidade", label: "Cidade", type: "text", required: true },
+                            { id: "s1_endereco_estado", label: "Estado", type: "text", required: true, placeholder: "Ex: SP" },
+                            { id: "s1_endereco_cep", label: "CEP", type: "text", required: true },
+                            { id: "s1_resp_nome", label: "Nome completo do Responsável", type: "text", required: true, grid: "full" },
+                            { id: "s1_resp_cargo", label: "Cargo do Responsável", type: "text", required: true },
+                            { id: "s1_resp_email", label: "E-mail institucional do Responsável", type: "email", required: true },
+                            { id: "s1_resp_tel", label: "Telefone Fixo", type: "tel" },
+                            { id: "s1_resp_cel", label: "Celular", type: "tel", required: true },
+                            { id: "s1_associacao", label: "A instituição é associada a:", type: "radio", required: true, grid: "full", options: ["CMB - Confederação das Santas Casas e Hospitais Filantrópicos", "ANAHP - Associação Nacional de Hospitais Privados", "Ambas as associações", "Nenhuma das anteriores"] },
+                        ]
+                    },
+                    {
+                        id: "s2",
+                        title: "Seção 2: Perfil Institucional",
+                        questions: [
+                            { id: "s2_leitos", label: "Número de leitos operacionais", type: "radio", required: true, grid: "full", options: ["Até 50 leitos", "51 a 100 leitos", "101 a 200 leitos", "201 a 300 leitos", "Mais de 300 leitos"] },
+                            { id: "s2_natureza", label: "Natureza jurídica da instituição", type: "radio", required: true, grid: "full", options: ["Filantrópica", "Privada com fins lucrativos", "Pública", "Outro (especificar):"], hasOther: true },
+                            { id: "s2_especialidades", label: "Principais especialidades médicas disponíveis (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Clínica Médica", "Cardiologia", "Oncologia", "Neurologia", "Pediatria", "Ginecologia/Obstetrícia", "Ortopedia", "Infectologia", "Endocrinologia", "Pneumologia", "Gastroenterologia", "Nefrologia", "Hematologia", "Reumatologia", "Outras (especificar):"], hasOther: true },
+                            { id: "s2_atendimentos", label: "Volume aproximado de atendimentos ambulatoriais/mês", type: "radio", required: true, grid: "full", options: ["Até 1.000", "1.001 a 5.000", "5.001 a 10.000", "Mais de 10.000"] },
+                            { id: "s2_possui", label: "A instituição possui (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Pronto-socorro 24h", "UTI Adulto", "UTI Pediátrica/Neonatal", "Centro cirúrgico", "Serviço de diagnóstico por imagem", "Laboratório de análises clínicas"] },
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Interesse e Experiência",
+                sections: [
+                    {
+                        id: "s3",
+                        title: "Seção 3: Interesse em Pesquisa Clínica",
+                        questions: [
+                            { id: "s3_interesse_rede", label: "Sua instituição tem interesse em participar da Rede Nacional de Pesquisa Clínica?", type: "radio", required: true, grid: "full", options: ["Sim, com grande interesse", "Sim, mas precisamos conhecer melhor o projeto", "Talvez, dependendo das condições", "Não temos interesse no momento"] },
+                            { id: "s3_motivacoes", label: "Principais motivações para participar (marque até 3 opções)", type: "checkbox", required: true, grid: "full", maxSelection: 3, options: ["Oferecer tratamentos inovadores aos nossos pacientes", "Capacitar nossa equipe em pesquisa clínica", "Gerar receita adicional para a instituição", "Aumentar a visibilidade e reputação do hospital", "Contribuir para o avanço da medicina brasileira", "Atrair e reter profissionais qualificados", "Melhorar processos internos de qualidade", "Estabelecer parcerias com a indústria farmacêutica", "Outro (especificar):"], hasOther: true },
+                            { id: "s3_apoio_direcao", label: "A direção do hospital apoia a participação em projetos de pesquisa clínica?", type: "radio", required: true, grid: "full", options: ["Sim, com total apoio", "Sim, com apoio parcial", "O tema ainda não foi formalmente discutido com a direção", "Não há apoio no momento"] },
+                        ]
+                    },
+                    {
+                        id: "s4",
+                        title: "Seção 4: Experiência Prévia em Pesquisa",
+                        questions: [
+                            { id: "s4_participou_pesquisa", label: "Sua instituição já participou de alguma pesquisa clínica?", type: "radio", required: true, grid: "full", options: ["Sim, participamos regularmente (mais de 5 estudos)", "Sim, participamos ocasionalmente (1 a 5 estudos)", "Não, mas já fomos convidados/consultados", "Não, nunca participamos"] },
+                            { id: "s4_areas_terapeuticas", label: "Se já participou, em quais áreas terapêuticas?", type: "textarea", grid: "full" },
+                            { id: "s4_tipos_estudos", label: "Tipos de estudos já realizados (se aplicável)", type: "checkbox", grid: "full", options: ["Estudos observacionais", "Ensaios clínicos fase II", "Ensaios clínicos fase III", "Ensaios clínicos fase IV", "Estudos de dispositivos médicos", "Outros (especificar):"], hasOther: true },
+                            { id: "s4_cep", label: "A instituição possui Comitê de Ética em Pesquisa (CEP)?", type: "radio", required: true, grid: "full", options: ["Sim, CEP próprio registrado na CONEP", "Sim, utilizamos CEP conveniado", "Não, mas temos interesse em estabelecer", "Não possuímos"] },
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Desafios e Informações Adicionais",
+                sections: [
+                    {
+                        id: "s5",
+                        title: "Seção 5: Desafios e Necessidades",
+                        questions: [
+                            { id: "s5_desafios", label: "Principais desafios identificados para participar de pesquisas clínicas (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Falta de pessoal capacitado em pesquisa", "Falta de infraestrutura física adequada", "Complexidade da regulamentação brasileira", "Falta de tempo da equipe médica", "Recursos financeiros limitados", "Desconhecimento sobre o processo", "Resistência cultural interna", "Falta de apoio da gestão", "Dificuldade com idioma (protocolos em inglês)", "Falta de sistemas informatizados adequados", "Outros (especificar):"], hasOther: true },
+                            { id: "s5_disponibilidade_capacitacao", label: "Disponibilidade para participar de capacitações online:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende das condições", "Não"] },
+                            { id: "s5_disponibilidade_consultoria", label: "Disponibilidade para receber consultoria presencial:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende das condições", "Não"] },
+                            { id: "s5_disponibilidade_investimento", label: "Disponibilidade para investir em adequações de infraestrutura:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende do valor", "Não"] },
+                            { id: "s5_disponibilidade_profissionais", label: "Disponibilidade para dedicar profissionais para a atividade:", type: "radio", required: true, grid: "full", options: ["Sim", "Parcialmente", "Não"] },
+                            { id: "s5_inicio_participacao", label: "Quando sua instituição poderia iniciar a participação no programa?", type: "radio", required: true, grid: "full", options: ["Imediatamente", "Em até 3 meses", "Em até 6 meses", "Em até 12 meses", "Ainda não temos previsão"] },
+                        ]
+                    },
+                    {
+                        id: "s6",
+                        title: "Seção 6: Informações Complementares",
+                        questions: [
+                            { id: "s6_conhecimento", label: "Como sua instituição tomou conhecimento desta iniciativa?", type: "radio", required: true, grid: "full", options: ["Através da CMB", "Através da ANAHP", "Indicação de outra instituição", "Comunicação direta do projeto", "Outro (especificar):"], hasOther: true },
+                            { id: "s6_comentarios", label: "Comentários adicionais, dúvidas ou sugestões:", type: "textarea", grid: "full" },
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Declaração e Envio",
+                sections: [
+                    {
+                        id: "s7",
+                        title: "Declaração de Interesse",
+                        questions: [
+                             { id: "s7_declaracao", label: "Declaro que:", type: "checkbox", required: true, grid: "full", options: ["As informações prestadas neste questionário são verdadeiras e atualizadas", "Tenho autorização da direção para responder em nome da instituição", "A instituição tem interesse em receber mais informações sobre o projeto", "Concordo em ser contatado(a) sobre os próximos passos"], mustCheckAll: true },
+                             { id: "s7_nome_diretor", label: "Nome do Diretor Geral/Clínico", type: "text", required: true, grid: "full" },
+                             { id: "s7_data", label: "Data", type: "date", required: true, grid: "full" },
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // --- LÓGICA DO FORMULÁRIO ---
+        let currentStep = 'hero';
+        const totalSteps = questionnaireStructure.length;
+        let formData = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+             // A página inicial (hero) já é renderizada estaticamente
+        });
+
+        function renderStep(step) {
+            const pageData = questionnaireStructure[step - 1];
+            const container = document.getElementById(`page-${step}`);
+            if (!container) return;
+
+            let content = `
+                <div class="container">
+                    <div class="form-container">
+                        <div class="instructions-section">
+                            <h3>INSTRUÇÕES DE PREENCHIMENTO</h3>
+                            <ul>
+                                <li>Este questionário deve ser preenchido pelo Diretor Clínico, Diretor Geral ou profissional designado pela direção.</li>
+                                <li>Preencha todos os campos obrigatórios marcados com asterisco (*).</li>
+                                <li>Ao final, confirme a declaração de interesse para submeter suas respostas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="progress-header">
+                            <div class="progress-info">
+                                <span>Etapa ${step} de ${totalSteps}</span>
+                                <span>${pageData.title}</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: ${(step / totalSteps) * 100}%"></div>
+                            </div>
+                        </div>
+                        <form id="form-step-${step}">
+                            ${pageData.sections.map(section => `
+                                <div class="form-section" id="${section.id}">
+                                    <h2>${section.title}</h2>
+                                    <div class="form-grid">
+                                        ${section.questions.map(q => renderQuestion(q)).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                            <div class="form-navigation">
+                                ${step > 1 ? `<button type="button" class="btn btn--outline" onclick="goToStep(${step - 1})"><i class="fas fa-arrow-left"></i> Anterior</button>` : `<button type="button" class="btn btn--outline" onclick="goToStep('invitation')"><i class="fas fa-arrow-left"></i> Voltar</button>`}
+                                ${step < totalSteps ? `<button type="button" class="btn btn--primary btn-next" onclick="validateAndGoToStep(${step + 1})">Próximo <i class="fas fa-arrow-right"></i></button>` : `<button type="button" class="btn btn--primary btn-next" onclick="submitForm()">Enviar Questionário <i class="fas fa-paper-plane"></i></button>`}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            container.innerHTML = content;
+            restoreFormData(step);
+            setupOtherInputListeners(step);
+        }
+
+        function renderQuestion(q) {
+            const requiredStar = q.required ? '<span class="required-star">*</span>' : '';
+            const gridClass = q.grid === 'full' ? 'form-group--full' : '';
+            let questionHtml = `<div class="form-group ${gridClass}" data-question-id="${q.id}">`;
+            questionHtml += `<label class="form-label">${q.label} ${requiredStar}</label>`;
+
+            switch (q.type) {
+                case 'text':
+                case 'email':
+                case 'tel':
+                case 'date':
+                    questionHtml += `<input type="${q.type}" id="${q.id}" name="${q.id}" class="form-control" ${q.placeholder ? `placeholder="${q.placeholder}"` : ''} ${q.required ? 'required' : ''}>`;
+                    break;
+                case 'textarea':
+                    questionHtml += `<textarea id="${q.id}" name="${q.id}" class="form-control" ${q.required ? 'required' : ''}></textarea>`;
+                    break;
+                case 'radio':
+                    questionHtml += `<div class="options-group">`;
+                    q.options.forEach((opt, index) => {
+                        const optionId = `${q.id}-${index}`;
+                        questionHtml += `
+                            <div class="radio-option">
+                                <label for="${optionId}">
+                                    <input type="radio" id="${optionId}" name="${q.id}" value="${opt}" ${q.required ? 'required' : ''}>
+                                    <span>${opt}</span>
+                                </label>
+                            </div>
+                        `;
+                    });
+                    questionHtml += `</div>`;
+                    if (q.hasOther) {
+                        questionHtml += `<div class="other-input-container" id="${q.id}-other-container"><input type="text" class="form-control" placeholder="Por favor, especifique." id="${q.id}-other-text"></div>`;
+                    }
+                    break;
+                case 'checkbox':
+                    questionHtml += `<div class="options-group">`;
+                     q.options.forEach((opt, index) => {
+                        const optionId = `${q.id}-${index}`;
+                        questionHtml += `
+                            <div class="checkbox-option">
+                                <label for="${optionId}">
+                                    <input type="checkbox" id="${optionId}" name="${q.id}" value="${opt}" data-max-selection="${q.maxSelection || ''}" data-must-check-all="${q.mustCheckAll || ''}">
+                                    <span>${opt}</span>
+                                </label>
+                            </div>
+                        `;
+                    });
+                    questionHtml += `</div>`;
+                    if (q.hasOther) {
+                        questionHtml += `<div class="other-input-container" id="${q.id}-other-container"><input type="text" class="form-control" placeholder="Por favor, especifique." id="${q.id}-other-text"></div>`;
+                    }
+                    break;
+            }
+            questionHtml += `</div>`;
+            return questionHtml;
+        }
+
+        function goToStep(stepId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const targetPage = document.getElementById(`page-${stepId}`);
+            if (targetPage) {
+                currentStep = stepId;
+                // Renderiza o formulário somente se for uma etapa numérica e ainda não tiver sido renderizada
+                if(typeof stepId === 'number' && stepId > 0 && stepId <= totalSteps && !document.getElementById(`form-step-${stepId}`)) {
+                    renderStep(stepId);
+                }
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function validateAndGoToStep(nextStep) {
+            if (validateStep(currentStep)) {
+                saveFormData(currentStep);
+                goToStep(nextStep);
+            } else {
+                showNotification('Por favor, preencha todos os campos obrigatórios (*).', 'error');
+            }
+        }
+
+        function validateStep(step) {
+            const form = document.getElementById(`form-step-${step}`);
+            if (!form) return false;
+            let isValid = true;
+
+            const pageData = questionnaireStructure[step - 1];
+            pageData.sections.forEach(section => {
+                section.questions.forEach(q => {
+                    if (!q.required) return;
+
+                    let questionIsValid = false;
+                    const element = form.querySelector(`[data-question-id="${q.id}"]`);
+
+                    switch (q.type) {
+                        case 'text':
+                        case 'email':
+                        case 'tel':
+                        case 'date':
+                        case 'textarea':
+                            const input = form.querySelector(`#${q.id}`);
+                            if (input && input.value.trim() !== '') {
+                                questionIsValid = true;
+                            }
+                            break;
+                        case 'radio':
+                            const radioChecked = form.querySelector(`input[name="${q.id}"]:checked`);
+                            if (radioChecked) {
+                                questionIsValid = true;
+                                if (q.hasOther && (radioChecked.value.toLowerCase().includes('outro') || radioChecked.value.toLowerCase().includes('outra'))) {
+                                    const otherText = form.querySelector(`#${q.id}-other-text`);
+                                    if (!otherText || otherText.value.trim() === '') {
+                                        questionIsValid = false;
+                                    }
+                                }
+                            }
+                            break;
+                        case 'checkbox':
+                            const checkboxes = form.querySelectorAll(`input[name="${q.id}"]:checked`);
+                            if (checkboxes.length > 0) {
+                                questionIsValid = true;
+                                if (q.mustCheckAll && checkboxes.length !== q.options.length) {
+                                    questionIsValid = false;
+                                }
+                                if (q.maxSelection && checkboxes.length > q.maxSelection) {
+                                    showNotification(`Para "${q.label}", selecione no máximo ${q.maxSelection} opções.`, 'error');
+                                    questionIsValid = false;
+                                }
+                                if (q.hasOther) {
+                                    const otherCheckbox = Array.from(checkboxes).find(cb => cb.value.toLowerCase().includes('outra') || cb.value.toLowerCase().includes('outros'));
+                                    if (otherCheckbox) {
+                                        const otherText = form.querySelector(`#${q.id}-other-text`);
+                                        if (!otherText || otherText.value.trim() === '') {
+                                            questionIsValid = false;
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                    }
+                    
+                    if (!questionIsValid) {
+                        isValid = false;
+                        element.style.border = '1px solid var(--color-error)';
+                        element.style.borderRadius = 'var(--radius-base)';
+                        element.style.padding = '1rem';
+                    } else {
+                        element.style.border = 'none';
+                        element.style.padding = '0';
+                    }
+                });
+            });
+
+            return isValid;
+        }
+
+        function saveFormData(step) {
+            const form = document.getElementById(`form-step-${step}`);
+            const pageData = questionnaireStructure[step - 1];
+            pageData.sections.forEach(section => {
+                section.questions.forEach(q => {
+                    let value;
+                    switch (q.type) {
+                        case 'text':
+                        case 'email':
+                        case 'tel':
+                        case 'date':
+                        case 'textarea':
+                            formData[q.id] = form.querySelector(`#${q.id}`).value;
+                            break;
+                        case 'radio':
+                            const radioChecked = form.querySelector(`input[name="${q.id}"]:checked`);
+                            if (radioChecked) {
+                                value = radioChecked.value;
+                                if (q.hasOther && (value.toLowerCase().includes('outro') || value.toLowerCase().includes('outra'))) {
+                                    const otherText = form.querySelector(`#${q.id}-other-text`).value.trim();
+                                    value = otherText ? `${value.replace(' (especificar):', '')}: ${otherText}` : value;
+                                }
+                                formData[q.id] = value;
+                            }
+                            break;
+                        case 'checkbox':
+                            const checkedBoxes = form.querySelectorAll(`input[name="${q.id}"]:checked`);
+                            const values = Array.from(checkedBoxes).map(cb => {
+                                let cbValue = cb.value;
+                                if (q.hasOther && (cbValue.toLowerCase().includes('outro') || cbValue.toLowerCase().includes('outra') || cbValue.toLowerCase().includes('outros'))) {
+                                    const otherText = form.querySelector(`#${q.id}-other-text`).value.trim();
+                                    cbValue = otherText ? `${cbValue.replace(' (especificar):', '').replace('s (especificar):', '')}: ${otherText}` : cbValue;
+                                }
+                                return cbValue;
+                            });
+                            formData[q.id] = values;
+                            break;
+                    }
+                });
+            });
+        }
+        
+        function restoreFormData(step) {
+            const form = document.getElementById(`form-step-${step}`);
+            const pageData = questionnaireStructure[step - 1];
+            pageData.sections.forEach(section => {
+                section.questions.forEach(q => {
+                    const value = formData[q.id];
+                    if (value === undefined) return;
+
+                    switch (q.type) {
+                        case 'text':
+                        case 'email':
+                        case 'tel':
+                        case 'date':
+                        case 'textarea':
+                            form.querySelector(`#${q.id}`).value = value;
+                            break;
+                        case 'radio':
+                            const radio = form.querySelector(`input[name="${q.id}"][value="${value}"]`);
+                            if(radio) radio.checked = true;
+                            if (q.hasOther && value.toLowerCase().includes('outro')) {
+                                const otherValue = formData[`${q.id}_outro`];
+                                if(otherValue) form.querySelector(`#${q.id}-other-text`).value = otherValue;
+                            }
+                            break;
+                        case 'checkbox':
+                            if (Array.isArray(value)) {
+                                value.forEach(val => {
+                                    const checkbox = form.querySelector(`input[name="${q.id}"][value="${val}"]`);
+                                    if (checkbox) checkbox.checked = true;
+                                });
+                                if (q.hasOther) {
+                                    const otherCheckbox = value.find(v => v.toLowerCase().includes('outra') || v.toLowerCase().includes('outros'));
+                                    if (otherCheckbox) {
+                                        const otherValue = formData[`${q.id}_outro`];
+                                        if(otherValue) form.querySelector(`#${q.id}-other-text`).value = otherValue;
+                                    }
+                                }
+                            }
+                            break;
+                    }
+                });
+            });
+        }
+
+        function setupOtherInputListeners(step) {
+            const form = document.getElementById(`form-step-${step}`);
+            if (!form) return;
+
+            const pageData = questionnaireStructure[step - 1];
+            const questionsWithOther = pageData.sections
+                .flatMap(s => s.questions)
+                .filter(q => q.hasOther);
+
+            questionsWithOther.forEach(q => {
+                const otherContainer = form.querySelector(`#${q.id}-other-container`);
+                if (!otherContainer) return;
+
+                const inputs = form.querySelectorAll(`input[name="${q.id}"]`);
+                inputs.forEach(input => {
+                    input.addEventListener('change', () => {
+                        let showOther = false;
+                        if (input.type === 'radio') {
+                            const selectedRadio = form.querySelector(`input[name="${q.id}"]:checked`);
+                            if (selectedRadio && (selectedRadio.value.toLowerCase().includes('outro') || selectedRadio.value.toLowerCase().includes('outra'))) {
+                                showOther = true;
+                            }
+                        } else if (input.type === 'checkbox') {
+                            const otherCheckbox = Array.from(inputs).find(cb => (cb.value.toLowerCase().includes('outro') || cb.value.toLowerCase().includes('outra') || cb.value.toLowerCase().includes('outros')));
+                            if (otherCheckbox && otherCheckbox.checked) {
+                                showOther = true;
+                            }
+                        }
+                        
+                        if (showOther) {
+                            otherContainer.classList.add('visible');
+                        } else {
+                            otherContainer.classList.remove('visible');
+                        }
+                    });
+                });
+                 // Check state on load
+                let shouldShowOnLoad = false;
+                const checkedInputs = form.querySelectorAll(`input[name="${q.id}"]:checked`);
+                 checkedInputs.forEach(checkedInput => {
+                    if (checkedInput && (checkedInput.value.toLowerCase().includes('outro') || checkedInput.value.toLowerCase().includes('outra') || checkedInput.value.toLowerCase().includes('outros'))) {
+                        shouldShowOnLoad = true;
+                    }
+                 });
+
+                if(shouldShowOnLoad) {
+                    otherContainer.classList.add('visible');
+                }
+
+            });
+        }
+
+        function submitForm() {
+            if (!validateStep(currentStep)) {
+                showNotification('Por favor, preencha todos os campos obrigatórios (*).', 'error');
+                return;
+            }
+            saveFormData(currentStep);
+
+            const submissionData = { ...formData, timestamp: new Date().toISOString() };
+            // Flatten arrays for easier sheet import
+            for (const key in submissionData) {
+                if (Array.isArray(submissionData[key])) {
+                    submissionData[key] = submissionData[key].join('; ');
+                }
+            }
+
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxx-Mo0gg9Fi1ieFW_-MeeZvicc2Oc0XdZjz_G1o13zxuj-LfTWesAMlBk0BCGW-31DWw/exec';
+            const submitButton = document.querySelector(`#form-step-${totalSteps} .btn-next`);
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(submissionData),
+            })
+            .then(res => res.json())
+            .then(response => {
+                if (response.result === 'success') {
+                    showNotification('Respostas enviadas com sucesso!', 'success');
+                    goToStep('next-steps');
+                } else {
+                    throw new Error(response.message || 'Erro desconhecido ao salvar.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao enviar dados para o Google Sheet:', error);
+                showNotification(`Erro ao enviar: ${error.message}`, 'error');
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Enviar Questionário <i class="fas fa-paper-plane"></i>';
+            });
+        }
+        
+        function restartForm() {
+            formData = {};
+            currentStep = 'hero';
+            goToStep('hero');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => document.body.removeChild(notification), 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
