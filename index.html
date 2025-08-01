@@ -563,7 +563,7 @@
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <h1>Rede Nacional de Pesquisa Clínica</h1>
+                        <h1>Rede de Pesquisa Clínica</h1>
                         <p class="hero-subtitle">Junte-se a uma iniciativa pioneira para democratizar o acesso à pesquisa clínica no Brasil, conectando hospitais de todos os portes em uma rede de colaboração e inovação.</p>
                         
                         <button class="btn btn--primary btn-start" onclick="goToStep('invitation')">
@@ -610,7 +610,7 @@
             <div class="invitation-card">
                 <h2>Convite à Participação – Projeto CMB & ANAHP</h2>
                 <p><strong>Prezado(a) Diretor(a),</strong></p>
-                <p>É com grande satisfação que convidamos sua instituição a integrar uma iniciativa estratégica para a criação de uma Rede Nacional de Pesquisa Clínica no Brasil. Esse projeto conta com o apoio da Confederação das Santas Casas e Hospitais Filantrópicos (CMB) e da Associação Nacional de Hospitais Privados (ANAHP).</p>
+                <p>É com grande satisfação que convidamos sua instituição a integrar uma iniciativa estratégica para a criação de uma Rede de Pesquisa Clínica no Brasil. Esse projeto conta com o apoio da Confederação das Santas Casas e Hospitais Filantrópicos (CMB) e da Associação Nacional de Hospitais Privados (ANAHP).</p>
                 <p>Nosso objetivo é estruturar uma rede robusta, descentralizada e representativa de centros de pesquisa clínica em todo o território nacional, fortalecendo a participação de instituições públicas, filantrópicas e privadas na agenda científica brasileira e ampliando o acesso da população a tratamentos inovadores.</p>
                 <p>A sua instituição foi selecionada para esta primeira etapa do projeto, que consiste no preenchimento de um breve questionário de interesse e potencial, com duração estimada de 10 minutos. Este levantamento permitirá identificar hospitais que desejam participar da rede e mapear, ainda que de forma inicial, sua capacidade para integrar essa importante iniciativa.</p>
                 <p>As informações de cada instituição são confidenciais e não serão compartilhadas com outras instituições. As informações também não serão divulgadas sem a prévia autorização das instituições que preencherem o questionário.</p>
@@ -619,7 +619,7 @@
                     <p>Atenciosamente,</p>
                     <p>Dr. Nelson Teich<br>
                     Ex-Ministro da Saúde<br>
-                    Coordenador do Projeto Nacional de Pesquisa Clínica<br>
+                    Coordenador do Projeto da criação de uma Rede de Pesquisa Clínica<br>
                     Com apoio institucional da CMB e da ANAHP</p>
                 </div>
                 <div class="actions">
@@ -648,7 +648,7 @@
                     <li><i class="fas fa-envelope-circle-check"></i><div><strong>Confirmação:</strong> Você receberá um e-mail confirmando o recebimento deste questionário.</div></li>
                     <li><i class="fas fa-magnifying-glass-chart"></i><div><strong>Análise:</strong> Todas as respostas serão analisadas em até 30 dias.</div></li>
                     <li><i class="fas fa-bullhorn"></i><div><strong>Convite:</strong> Instituições interessadas serão convidadas para uma apresentação detalhada do projeto.</div></li>
-                    <li><i class="fas fa-file-signature"></i><div><strong>Avaliação:</strong> Um segundo questionário poderá ser enviado para avaliar a infraestrutura em maior detalhe.</div></li>
+                    <li><i class="fas fa-file-signature"></i><div><strong>Avaliação:</strong> Um segundo questionário poderá ser enviado para avaliar a infraestrutura e recursos humanos.</div></li>
                 </ul>
 
                 <h3>CONTATO</h3>
@@ -680,6 +680,7 @@
                         questions: [
                             { id: "s1_nome_inst", label: "Nome da Instituição", type: "text", required: true, grid: "full" },
                             { id: "s1_cnpj", label: "CNPJ", type: "text", required: true, grid: "full" },
+                            { id: "s1_CNES", label: "CNES", type: "text", required: false, grid: "full" },
                             { id: "s1_endereco_rua", label: "Rua/Avenida", type: "text", required: true, grid: "full" },
                             { id: "s1_endereco_num", label: "Número", type: "text", required: true },
                             { id: "s1_endereco_comp", label: "Complemento", type: "text" },
@@ -689,9 +690,10 @@
                             { id: "s1_endereco_cep", label: "CEP", type: "text", required: true },
                             { id: "s1_resp_nome", label: "Nome completo do Responsável", type: "text", required: true, grid: "full" },
                             { id: "s1_resp_cargo", label: "Cargo do Responsável", type: "text", required: true },
+                            { id: "s1_resp_profissao", label: "Profissão", type: "text", required: true },
                             { id: "s1_resp_email", label: "E-mail institucional do Responsável", type: "email", required: true },
-                            { id: "s1_resp_tel", label: "Telefone Fixo", type: "tel" },
-                            { id: "s1_resp_cel", label: "Celular", type: "tel", required: true },
+                            { id: "s1_resp_tel", label: "Telefone", type: "tel" },
+                            { id: "s1_resp_cel", label: "Celular", type: "tel", required: false },
                             { id: "s1_associacao", label: "A instituição é associada a:", type: "radio", required: true, grid: "full", options: ["CMB - Confederação das Santas Casas e Hospitais Filantrópicos", "ANAHP - Associação Nacional de Hospitais Privados", "Ambas as associações", "Nenhuma das anteriores"] },
                         ]
                     },
@@ -701,9 +703,9 @@
                         questions: [
                             { id: "s2_leitos", label: "Número de leitos operacionais", type: "radio", required: true, grid: "full", options: ["Até 50 leitos", "51 a 100 leitos", "101 a 200 leitos", "201 a 300 leitos", "Mais de 300 leitos"] },
                             { id: "s2_natureza", label: "Natureza jurídica da instituição", type: "radio", required: true, grid: "full", options: ["Filantrópica", "Privada com fins lucrativos", "Pública", "Outro (especificar):"], hasOther: true },
-                            { id: "s2_especialidades", label: "Principais especialidades médicas disponíveis (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Clínica Médica", "Cardiologia", "Oncologia", "Neurologia", "Pediatria", "Ginecologia/Obstetrícia", "Ortopedia", "Infectologia", "Endocrinologia", "Pneumologia", "Gastroenterologia", "Nefrologia", "Hematologia", "Reumatologia", "Outras (especificar):"], hasOther: true },
+                            { id: "s2_especialidades", label: "Principais especialidades médicas disponíveis (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Clínica Médica", "Cardiologia", "Oncologia", "Neurologia", "Pediatria", "Ginecologia/Obstetrícia", "Ortopedia", "Infectologia", "Endocrinologia", "Pneumologia", "Gastroenterologia", "Nefrologia", "Hematologia", "Reumatologia", "Dermatologia", "Outras (especificar):"], hasOther: true },
                             { id: "s2_atendimentos", label: "Volume aproximado de atendimentos ambulatoriais/mês", type: "radio", required: true, grid: "full", options: ["Até 1.000", "1.001 a 5.000", "5.001 a 10.000", "Mais de 10.000"] },
-                            { id: "s2_possui", label: "A instituição possui (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Pronto-socorro 24h", "UTI Adulto", "UTI Pediátrica/Neonatal", "Centro cirúrgico", "Serviço de diagnóstico por imagem", "Laboratório de análises clínicas"] },
+                            { id: "s2_possui", label: "A instituição possui (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Pronto-socorro 24h", "UTI Adulto", "UTI Pediátrica/Neonatal", "Centro cirúrgico", "Serviço de diagnóstico por imagem", "Laboratório de análises clínicas", "Farmácia para manipulação de medicamentos infusionais", "Hospital-dia", "Serviço de Patologia", "Centro de Infusão", "Acreditação de Qualidade", "Autorização para condução de pesquisa clínica", "Prontuário Eletrônico"] },
                         ]
                     }
                 ]
@@ -715,8 +717,8 @@
                         id: "s3",
                         title: "Seção 3: Interesse em Pesquisa Clínica",
                         questions: [
-                            { id: "s3_interesse_rede", label: "Sua instituição tem interesse em participar da Rede Nacional de Pesquisa Clínica?", type: "radio", required: true, grid: "full", options: ["Sim, com grande interesse", "Sim, mas precisamos conhecer melhor o projeto", "Talvez, dependendo das condições", "Não temos interesse no momento"] },
-                            { id: "s3_motivacoes", label: "Principais motivações para participar (marque até 3 opções)", type: "checkbox", required: true, grid: "full", maxSelection: 3, options: ["Oferecer tratamentos inovadores aos nossos pacientes", "Capacitar nossa equipe em pesquisa clínica", "Gerar receita adicional para a instituição", "Aumentar a visibilidade e reputação do hospital", "Contribuir para o avanço da medicina brasileira", "Atrair e reter profissionais qualificados", "Melhorar processos internos de qualidade", "Estabelecer parcerias com a indústria farmacêutica", "Outro (especificar):"], hasOther: true },
+                            { id: "s3_interesse_rede", label: "Sua instituição tem interesse em participar da Rede de Pesquisa Clínica?", type: "radio", required: true, grid: "full", options: ["Sim, com grande interesse", "Sim, mas precisamos conhecer melhor o projeto", "Talvez, dependendo das condições", "Não temos interesse no momento"] },
+                            { id: "s3_motivacoes", label: "Principais motivações para participar (marque até 3 opções)", type: "checkbox", required: false, grid: "full", maxSelection: 3, options: ["Oferecer tratamentos inovadores aos nossos pacientes", "Capacitar nossa equipe em pesquisa clínica", "Gerar receita adicional para a instituição", "Aumentar a visibilidade e reputação do hospital", "Contribuir para o avanço da medicina brasileira", "Atrair e reter profissionais qualificados", "Melhorar processos internos de qualidade", "Estabelecer parcerias com a indústria farmacêutica", "Outro (especificar):"], hasOther: true },
                             { id: "s3_apoio_direcao", label: "A direção do hospital apoia a participação em projetos de pesquisa clínica?", type: "radio", required: true, grid: "full", options: ["Sim, com total apoio", "Sim, com apoio parcial", "O tema ainda não foi formalmente discutido com a direção", "Não há apoio no momento"] },
                         ]
                     },
@@ -726,8 +728,8 @@
                         questions: [
                             { id: "s4_participou_pesquisa", label: "Sua instituição já participou de alguma pesquisa clínica?", type: "radio", required: true, grid: "full", options: ["Sim, participamos regularmente (mais de 5 estudos)", "Sim, participamos ocasionalmente (1 a 5 estudos)", "Não, mas já fomos convidados/consultados", "Não, nunca participamos"] },
                             { id: "s4_areas_terapeuticas", label: "Se já participou, em quais áreas terapêuticas?", type: "textarea", grid: "full" },
-                            { id: "s4_tipos_estudos", label: "Tipos de estudos já realizados (se aplicável)", type: "checkbox", grid: "full", options: ["Estudos observacionais", "Ensaios clínicos fase II", "Ensaios clínicos fase III", "Ensaios clínicos fase IV", "Estudos de dispositivos médicos", "Outros (especificar):"], hasOther: true },
-                            { id: "s4_cep", label: "A instituição possui Comitê de Ética em Pesquisa (CEP)?", type: "radio", required: true, grid: "full", options: ["Sim, CEP próprio registrado na CONEP", "Sim, utilizamos CEP conveniado", "Não, mas temos interesse em estabelecer", "Não possuímos"] },
+                            { id: "s4_tipos_estudos", label: "Tipos de estudos já realizados (se aplicável)", type: "checkbox", grid: "full", options: ["Estudos observacionais", "Ensaios clínicos fase I", "Ensaios clínicos fase II", "Ensaios clínicos fase III", "Ensaios clínicos fase IV", "Estudos de dispositivos médicos", "Outros (especificar):"], hasOther: true },
+                            { id: "s4_cep", label: "A instituição possui Comitê de Ética em Pesquisa (CEP)?", type: "radio", required: true, grid: "full", options: ["Sim, CEP próprio registrado na CONEP (Comissão Nacional de Ética em Pesquisa)", "Sim, utilizamos CEP conveniado", "Não, mas temos interesse em estabelecer", "Não possuímos"] },
                         ]
                     }
                 ]
@@ -739,11 +741,12 @@
                         id: "s5",
                         title: "Seção 5: Desafios e Necessidades",
                         questions: [
-                            { id: "s5_desafios", label: "Principais desafios identificados para participar de pesquisas clínicas (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Falta de pessoal capacitado em pesquisa", "Falta de infraestrutura física adequada", "Complexidade da regulamentação brasileira", "Falta de tempo da equipe médica", "Recursos financeiros limitados", "Desconhecimento sobre o processo", "Resistência cultural interna", "Falta de apoio da gestão", "Dificuldade com idioma (protocolos em inglês)", "Falta de sistemas informatizados adequados", "Outros (especificar):"], hasOther: true },
+                            { id: "s5_desafios", label: "Principais desafios identificados para participar de pesquisas clínicas (marque todas que se aplicam)", type: "checkbox", required: true, grid: "full", options: ["Falta de pessoal capacitado em pesquisa", "Falta de infraestrutura física adequada", "Complexidade da regulamentação brasileira", "Falta de tempo ou interesse da equipe médica", "Recursos financeiros limitados", "Desconhecimento sobre o processo", "Resistência cultural interna", "Falta de apoio da gestão", "Dificuldade com idioma (protocolos em inglês)", "Falta de sistemas informatizados adequados", "Outros (especificar):"], hasOther: true },
                             { id: "s5_disponibilidade_capacitacao", label: "Disponibilidade para participar de capacitações online:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende das condições", "Não"] },
                             { id: "s5_disponibilidade_consultoria", label: "Disponibilidade para receber consultoria presencial:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende das condições", "Não"] },
-                            { id: "s5_disponibilidade_investimento", label: "Disponibilidade para investir em adequações de infraestrutura:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende do valor", "Não"] },
-                            { id: "s5_disponibilidade_profissionais", label: "Disponibilidade para dedicar profissionais para a atividade:", type: "radio", required: true, grid: "full", options: ["Sim", "Parcialmente", "Não"] },
+                            { id: "s5_disponibilidade_investimento", label: "Disponibilidade para investir recursos próprios em adequações de infraestrutura:", type: "radio", required: true, grid: "full", options: ["Sim", "Depende do valor", "Não"] },
+                            { id: "s5_disponibilidade_profissionais (equipe médicca e multi)", label: "Disponibilidade para dedicar profissionais para a atividade: Equipe Médica e Multi (Médicos Investigadores e subinvestigadores, enfermeiros, farmacêuticos):", type: "radio", required: true, grid: "full", options: ["Sim", "Parcialmente", "Não"] },
+                            { id: "s5_disponibilidade_profissionais (coordenadores e monitores)", label: "Disponibilidade para dedicar profissionais para a atividade: Coordenadores e Monitores:", type: "radio", required: true, grid: "full", options: ["Sim", "Parcialmente", "Não"] },
                             { id: "s5_inicio_participacao", label: "Quando sua instituição poderia iniciar a participação no programa?", type: "radio", required: true, grid: "full", options: ["Imediatamente", "Em até 3 meses", "Em até 6 meses", "Em até 12 meses", "Ainda não temos previsão"] },
                         ]
                     },
@@ -764,7 +767,7 @@
                         id: "s7",
                         title: "Declaração de Interesse",
                         questions: [
-                             { id: "s7_declaracao", label: "Declaro que:", type: "checkbox", required: true, grid: "full", options: ["As informações prestadas neste questionário são verdadeiras e atualizadas", "Tenho autorização da direção para responder em nome da instituição", "A instituição tem interesse em receber mais informações sobre o projeto", "Concordo em ser contatado(a) sobre os próximos passos"], mustCheckAll: true },
+                             { id: "s7_declaracao", label: "Declaro que:", type: "checkbox", required: false, grid: "full", options: ["As informações prestadas neste questionário são verdadeiras e atualizadas", "Tenho autorização da direção para responder em nome da instituição", "A instituição tem interesse em receber mais informações sobre o projeto", "Concordo em ser contatado(a) sobre os próximos passos"], mustCheckAll: true },
                              { id: "s7_nome_diretor", label: "Nome do Diretor Geral/Clínico", type: "text", required: true, grid: "full" },
                              { id: "s7_data", label: "Data", type: "date", required: true, grid: "full" },
                         ]
