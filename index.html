@@ -608,9 +608,9 @@
     <section id="page-invitation" class="page">
         <div class="container container-narrow">
             <div class="invitation-card">
-                <h2>Convite à Participação – Projeto CMB & ANAHP</h2>
+                <h2>Convite à Participação – Projeto CMB</h2>
                 <p><strong>Prezado(a) Diretor(a),</strong></p>
-                <p>É com grande satisfação que convidamos sua instituição a integrar uma iniciativa estratégica para a criação de uma Rede de Pesquisa Clínica no Brasil. Esse projeto conta com o apoio da Confederação das Santas Casas e Hospitais Filantrópicos (CMB) e da Associação Nacional de Hospitais Privados (ANAHP).</p>
+                <p>É com grande satisfação que convidamos sua instituição a integrar uma iniciativa estratégica para a criação de uma Rede de Pesquisa Clínica no Brasil. Esse projeto conta com o apoio da Confederação das Santas Casas e Hospitais Filantrópicos (CMB).</p>
                 <p>Nosso objetivo é estruturar uma rede robusta, descentralizada e representativa de centros de pesquisa clínica em todo o território nacional, fortalecendo a participação de instituições públicas, filantrópicas e privadas na agenda científica brasileira e ampliando o acesso da população a tratamentos inovadores.</p>
                 <p>A sua instituição foi selecionada para esta primeira etapa do projeto, que consiste no preenchimento de um breve questionário de interesse e potencial, com duração estimada de 10 minutos. Este levantamento permitirá identificar hospitais que desejam participar da rede e mapear, ainda que de forma inicial, sua capacidade para integrar essa importante iniciativa.</p>
                 <p>As informações de cada instituição são confidenciais e não serão compartilhadas com outras instituições. As informações também não serão divulgadas sem a prévia autorização das instituições que preencherem o questionário.</p>
@@ -620,7 +620,7 @@
                     <p>Dr. Nelson Teich<br>
                     Ex-Ministro da Saúde<br>
                     Coordenador do Projeto da criação de uma Rede de Pesquisa Clínica<br>
-                    Com apoio institucional da CMB e da ANAHP</p>
+                    Com apoio institucional da CMB e da Ekantika Saúde</p>
                 </div>
                 <div class="actions">
                     <button class="btn btn--primary btn-start" onclick="goToStep(1)">
@@ -694,7 +694,7 @@
                             { id: "s1_resp_email", label: "E-mail institucional do Responsável", type: "email", required: true },
                             { id: "s1_resp_tel", label: "Telefone", type: "tel" },
                             { id: "s1_resp_cel", label: "Celular", type: "tel", required: false },
-                            { id: "s1_associacao", label: "A instituição é associada a:", type: "radio", required: true, grid: "full", options: ["CMB - Confederação das Santas Casas e Hospitais Filantrópicos", "ANAHP - Associação Nacional de Hospitais Privados", "Ambas as associações", "Nenhuma das anteriores"] },
+                            { id: "s1_associacao", label: "A instituição é associada a CMB?:", type: "radio", required: true, grid: "full", options: ["Sim", "Não"] },
                         ]
                     },
                     {
@@ -754,7 +754,7 @@
                         id: "s6",
                         title: "Seção 6: Informações Complementares",
                         questions: [
-                            { id: "s6_conhecimento", label: "Como sua instituição tomou conhecimento desta iniciativa?", type: "radio", required: true, grid: "full", options: ["Através da CMB", "Através da ANAHP", "Indicação de outra instituição", "Comunicação direta do projeto", "Outro (especificar):"], hasOther: true },
+                            { id: "s6_conhecimento", label: "Como sua instituição tomou conhecimento desta iniciativa?", type: "radio", required: true, grid: "full", options: ["Através da CMB", "Indicação de outra instituição", "Comunicação direta do projeto", "Outro (especificar):"], hasOther: true },
                             { id: "s6_comentarios", label: "Comentários adicionais, dúvidas ou sugestões:", type: "textarea", grid: "full" },
                         ]
                     }
