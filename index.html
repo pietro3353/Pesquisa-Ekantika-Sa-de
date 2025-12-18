@@ -7,65 +7,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Atualizado para 6.4.0 para garantir icones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-          --color-primary: #3A8DCD; /* Azul da área da saúde */
-          --color-secondary-brand: #2c3e50; /* Azul escuro/Chumbo */
-          
-          --color-background: #f4f7f9;
-          --color-surface: #ffffff;
-          --color-text: #2c3e50; 
-          --color-text-secondary: #5a6872;
-          
-          --color-primary-hover: #327ab8;
-          --color-primary-active: #2a689d;
-          --color-secondary: rgba(58, 141, 205, 0.1);
-          
-          --color-border: #dfe6e9;
-          --color-btn-primary-text: #ffffff;
-          
-          --color-error: #d32f2f;
-          --color-success: #388e3c;
-          --color-info: #1976d2;
-          --color-focus-ring: rgba(58, 141, 205, 0.4);
+            --color-primary: #3A8DCD; /* Azul da área da saúde */
+            --color-secondary-brand: #2c3e50; /* Azul escuro/Chumbo */
+            
+            --color-background: #f4f7f9;
+            --color-surface: #ffffff;
+            --color-text: #2c3e50; 
+            --color-text-secondary: #5a6872;
+            
+            --color-primary-hover: #327ab8;
+            --color-primary-active: #2a689d;
+            --color-secondary: rgba(58, 141, 205, 0.1);
+            
+            --color-border: #dfe6e9;
+            --color-btn-primary-text: #ffffff;
+            
+            --color-error: #d32f2f;
+            --color-success: #388e3c;
+            --color-info: #1976d2;
+            --color-focus-ring: rgba(58, 141, 205, 0.4);
 
-          --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          --font-size-base: 16px;
-          --line-height-normal: 1.6;
-          --radius-base: 8px;
-          --radius-lg: 12px;
-          --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-          --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
-          --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
-          --duration-normal: 250ms;
-          --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+            --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-size-base: 16px;
+            --line-height-normal: 1.6;
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Estilos base */
         html {
-          font-size: var(--font-size-base);
-          font-family: var(--font-family-base);
-          line-height: var(--line-height-normal);
-          color: var(--color-text);
-          background-color: var(--color-background);
-          -webkit-font-smoothing: antialiased;
-          box-sizing: border-box;
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
         }
 
         body {
-          margin: 0;
-          padding: 0;
+            margin: 0;
+            padding: 0;
         }
 
         *, *::before, *::after {
-          box-sizing: inherit;
+            box-sizing: inherit;
         }
 
         h1, h2, h3, h4 {
-          font-weight: 700;
-          line-height: 1.2;
-          color: var(--color-secondary-brand);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-secondary-brand);
         }
 
         h1 { font-size: 2.5rem; }
@@ -73,10 +74,10 @@
         h3 { font-size: 1.25rem; }
         
         .container {
-          width: 100%;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 24px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
         .container-narrow {
             max-width: 800px;
@@ -84,34 +85,34 @@
 
         /* Gerenciamento de Páginas/Etapas */
         .page {
-          display: none;
-          padding: 3rem 0;
-          animation: fadeIn 0.5s ease-in-out;
+            display: none;
+            padding: 3rem 0;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         .page.active {
-          display: block;
+            display: block;
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Estilos de Botão */
         .btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 14px 28px;
-          border-radius: var(--radius-base);
-          font-size: 1rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all var(--duration-normal) var(--ease-standard);
-          border: 2px solid transparent;
-          text-decoration: none;
-          width: 100%; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-base);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: 2px solid transparent;
+            text-decoration: none;
+            width: 100%; 
         }
         .btn i {
             margin-right: 8px;
@@ -121,30 +122,30 @@
             margin-right: 0;
         }
         .btn--primary {
-          background-color: var(--color-primary);
-          color: var(--color-btn-primary-text);
-          border-color: var(--color-primary);
+            background-color: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-color: var(--color-primary);
         }
         .btn--primary:hover {
-          background-color: var(--color-primary-hover);
-          border-color: var(--color-primary-hover);
-          transform: translateY(-3px);
-          box-shadow: var(--shadow-md);
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
         .btn--outline {
-          background-color: transparent;
-          color: var(--color-primary);
-          border-color: var(--color-primary);
+            background-color: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
         }
         .btn--outline:hover {
-          background-color: var(--color-primary);
-          color: var(--color-btn-primary-text);
+            background-color: var(--color-primary);
+            color: var(--color-btn-primary-text);
         }
         .btn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-          transform: none;
-          box-shadow: none;
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         
         @media (min-width: 768px) {
@@ -316,12 +317,12 @@
 
         /* Estilos do Formulário */
         .form-container {
-          background: var(--color-surface);
-          padding: 2.5rem;
-          border-radius: var(--radius-lg);
-          box-shadow: var(--shadow-md);
-          max-width: 800px;
-          margin: 0 auto;
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .instructions-section {
@@ -363,9 +364,9 @@
         }
 
         .form-section {
-          margin-bottom: 2.5rem;
-          padding-bottom: 1.5rem;
-          border-bottom: 1px solid var(--color-border);
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
         }
         .form-section:last-of-type {
             border-bottom: none;
@@ -377,9 +378,9 @@
             margin-bottom: 1.5rem;
         }
         .form-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
         @media(min-width: 768px) {
             .form-grid {
@@ -391,30 +392,30 @@
             flex-direction: column;
         }
         .form-group--full {
-          grid-column: 1 / -1;
+            grid-column: 1 / -1;
         }
         .form-label {
-          display: block;
-          margin-bottom: 0.5rem;
-          font-weight: 600;
-          font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
         .form-label .required-star {
             color: var(--color-error);
         }
         .form-control, select.form-control, textarea.form-control {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-base);
-          background-color: var(--color-background);
-          color: var(--color-text);
-          transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
         .form-control:focus {
-          outline: none;
-          border-color: var(--color-primary);
-          box-shadow: 0 0 0 3px var(--color-focus-ring);
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-focus-ring);
         }
         textarea.form-control {
             resize: vertical;
@@ -459,14 +460,31 @@
             display: block;
         }
 
+        /* Input Group para Busca CNES (NOVO) */
+        .input-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .input-group .form-control {
+            flex: 1;
+        }
+        .btn-search {
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            height: fit-content;
+            align-self: center;
+        }
+
         /* Navegação do formulário */
         .form-navigation {
-          display: flex;
-          flex-direction: column-reverse;
-          gap: 1rem;
-          margin-top: 2.5rem;
-          padding-top: 1.5rem;
-          border-top: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
         }
         @media (min-width: 768px) {
             .form-navigation {
@@ -533,22 +551,22 @@
 
         /* Notificações */
         .notification {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          padding: 12px 20px;
-          border-radius: var(--radius-base);
-          color: white;
-          font-weight: 500;
-          z-index: 1000;
-          opacity: 0;
-          transform: translateX(100%);
-          transition: all 0.3s ease-in-out;
-          box-shadow: var(--shadow-lg);
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: var(--radius-base);
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease-in-out;
+            box-shadow: var(--shadow-lg);
         }
         .notification.show {
-          opacity: 1;
-          transform: translateX(0);
+            opacity: 1;
+            transform: translateX(0);
         }
         .notification.success { background-color: var(--color-success); }
         .notification.error { background-color: var(--color-error); }
@@ -594,9 +612,9 @@
                            <i class="fas fa-heart-pulse"></i>
                            <h3>Avanço para Pacientes</h3>
                         </div>
-                         <div class="visual-card card-3">
-                           <i class="fas fa-globe-americas"></i>
-                           <h3>Colaboração Nacional</h3>
+                          <div class="visual-card card-3">
+                            <i class="fas fa-globe-americas"></i>
+                            <h3>Colaboração Nacional</h3>
                         </div>
                     </div>
                 </div>
@@ -669,6 +687,10 @@
     </section>
 
     <script>
+        // --- URL DO SCRIPT GOOGLE APPS (ATUALIZADA) ---
+        // Certifique-se que o script no backend tenha a função doGet implementada para busca
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxV0FjWpXQFSJmOIARGrqJdNIHyOqTiFpG-ASGRSLF6iKkFGqk5T_UagnFteQvgZl8k5w/exec';
+
         // --- ESTRUTURA DO QUESTIONÁRIO ---
         const questionnaireStructure = [
             {
@@ -678,9 +700,10 @@
                         id: "s1",
                         title: "Seção 1: Identificação Institucional",
                         questions: [
+                            // Alterado para 'cnes_search' para habilitar a busca
+                            { id: "s1_CNES", label: "CNES (Preenchimento Automático)", type: "cnes_search", required: false, grid: "full", placeholder: "Digite o CNES para buscar dados..." },
                             { id: "s1_nome_inst", label: "Nome da Instituição", type: "text", required: true, grid: "full" },
                             { id: "s1_cnpj", label: "CNPJ", type: "text", required: true, grid: "full" },
-                            { id: "s1_CNES", label: "CNES", type: "text", required: false, grid: "full" },
                             { id: "s1_endereco_rua", label: "Rua/Avenida", type: "text", required: true, grid: "full" },
                             { id: "s1_endereco_num", label: "Número", type: "text", required: true },
                             { id: "s1_endereco_comp", label: "Complemento", type: "text" },
@@ -840,6 +863,18 @@
             questionHtml += `<label class="form-label">${q.label} ${requiredStar}</label>`;
 
             switch (q.type) {
+                // NOVO: Tipo cnes_search com botão
+                case 'cnes_search': 
+                    questionHtml += `
+                        <div class="input-group">
+                            <input type="text" id="${q.id}" name="${q.id}" class="form-control" placeholder="${q.placeholder || ''}" ${q.required ? 'required' : ''}>
+                            <button type="button" class="btn btn--primary btn-search" onclick="fetchCNESData('${q.id}')">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                        </div>
+                        <div id="${q.id}-error" style="color: var(--color-error); font-size: 0.85rem; margin-top: 5px; display: none;"></div>
+                    `;
+                    break;
                 case 'text':
                 case 'email':
                 case 'tel':
@@ -869,7 +904,7 @@
                     break;
                 case 'checkbox':
                     questionHtml += `<div class="options-group">`;
-                     q.options.forEach((opt, index) => {
+                      q.options.forEach((opt, index) => {
                         const optionId = `${q.id}-${index}`;
                         questionHtml += `
                             <div class="checkbox-option">
@@ -889,6 +924,110 @@
             questionHtml += `</div>`;
             return questionHtml;
         }
+
+        // --- LÓGICA DE BUSCA CNES ---
+        function fetchCNESData(inputId) {
+            const cnesInput = document.getElementById(inputId);
+            const errorDiv = document.getElementById(`${inputId}-error`);
+            const searchBtn = cnesInput.nextElementSibling;
+            const originalBtnContent = searchBtn.innerHTML;
+            const cnesValue = cnesInput.value.trim();
+
+            if (!cnesValue) {
+                errorDiv.textContent = "Por favor, digite um CNES válido.";
+                errorDiv.style.display = "block";
+                return;
+            }
+
+            errorDiv.style.display = "none";
+            searchBtn.disabled = true;
+            searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Buscando...';
+
+            const searchUrl = `${SCRIPT_URL}?action=searchCNES&cnes=${encodeURIComponent(cnesValue)}`;
+
+            fetch(searchUrl)
+                .then(response => response.json())
+                .then(data => {
+                    searchBtn.disabled = false;
+                    searchBtn.innerHTML = originalBtnContent;
+
+                    if (data.result === 'success') {
+                        populateForm(data.data);
+                        showNotification("Dados encontrados e preenchidos!", "success");
+                    } else if (data.result === 'notFound') {
+                        showNotification("CNES não encontrado na base de dados.", "error");
+                    } else {
+                        showNotification("Erro na busca: " + (data.message || "Desconhecido"), "error");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro na busca:", error);
+                    searchBtn.disabled = false;
+                    searchBtn.innerHTML = originalBtnContent;
+                    showNotification("Erro de conexão ao buscar dados.", "error");
+                });
+        }
+
+        function populateForm(data) {
+            const mappings = {
+                'NOME_ESTABELECIMENTO': 's1_nome_inst',
+                'NO_LOGRADOURO': 's1_endereco_rua',
+                'NU_ENDERECO': 's1_endereco_num',
+                'NO_COMPLEMENTO': 's1_endereco_comp',
+                'NO_BAIRRO': 's1_endereco_bairro',
+                'MUNICIPIO': 's1_endereco_cidade',
+                'UF': 's1_endereco_estado',
+                'CO_CEP': 's1_endereco_cep',
+                // 'NO_EMAIL': 's1_resp_email', // REMOVIDO: Manual
+                'NU_TELEFONE': 's1_resp_tel'
+            };
+
+            for (const [key, fieldId] of Object.entries(mappings)) {
+                if (data[key]) {
+                    const field = document.getElementById(fieldId);
+                    if (field) field.value = data[key];
+                }
+            }
+
+            // Lógica Especial: Leitos (Radio)
+            if (data['LEITOS_EXISTENTES']) {
+                const leitos = parseInt(data['LEITOS_EXISTENTES'], 10);
+                let leitosOption = "";
+                if (leitos <= 50) leitosOption = "Até 50 leitos";
+                else if (leitos <= 100) leitosOption = "51 a 100 leitos";
+                else if (leitos <= 200) leitosOption = "101 a 200 leitos";
+                else if (leitos <= 300) leitosOption = "201 a 300 leitos";
+                else leitosOption = "Mais de 300 leitos";
+
+                checkRadioOption('s2_leitos', leitosOption);
+            }
+
+            // Lógica Especial: Natureza Jurídica (Radio) - AJUSTADA
+            if (data['DESC_NATUREZA_JURIDICA']) {
+                const desc = data['DESC_NATUREZA_JURIDICA'].toUpperCase().trim();
+                let naturezaOption = "";
+                
+                // Mapeamento exato conforme solicitado
+                if (desc === "HOSPITAL_FILANTRÓPICO" || desc === "HOSPITAL_FILANTROPICO") {
+                    naturezaOption = "Filantrópica";
+                } else if (desc === "HOSPITAL_PÚBLICO" || desc === "HOSPITAL_PUBLICO") {
+                    naturezaOption = "Pública";
+                } else if (desc === "HOSPITAL_PRIVADO") {
+                    naturezaOption = "Privada com fins lucrativos";
+                }
+                
+                if (naturezaOption) checkRadioOption('s2_natureza', naturezaOption);
+            }
+        }
+
+        function checkRadioOption(name, value) {
+            const radios = document.querySelectorAll(`input[name="${name}"]`);
+            radios.forEach(radio => {
+                if (radio.value === value) radio.checked = true;
+            });
+        }
+
+        // checkCheckboxOption removido pois não estamos usando
 
         function goToStep(stepId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -927,6 +1066,7 @@
                     const element = form.querySelector(`[data-question-id="${q.id}"]`);
 
                     switch (q.type) {
+                        case 'cnes_search':
                         case 'text':
                         case 'email':
                         case 'tel':
@@ -995,6 +1135,7 @@
                 section.questions.forEach(q => {
                     let value;
                     switch (q.type) {
+                        case 'cnes_search':
                         case 'text':
                         case 'email':
                         case 'tel':
@@ -1039,6 +1180,7 @@
                     if (value === undefined) return;
 
                     switch (q.type) {
+                        case 'cnes_search':
                         case 'text':
                         case 'email':
                         case 'tel':
@@ -1058,7 +1200,7 @@
                             if (Array.isArray(value)) {
                                 value.forEach(val => {
                                     const checkbox = form.querySelector(`input[name="${q.id}"][value="${val}"]`);
-                                    if (checkbox) checkbox.checked = true;
+                                    if(checkbox) checkbox.checked = true;
                                 });
                                 if (q.hasOther) {
                                     const otherCheckbox = value.find(v => v.toLowerCase().includes('outra') || v.toLowerCase().includes('outros'));
@@ -1148,19 +1290,15 @@
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                mode: 'cors',
+                mode: 'no-cors',
                 cache: 'no-cache',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(submissionData),
             })
-            .then(res => res.json())
-            .then(response => {
-                if (response.result === 'success') {
-                    showNotification('Respostas enviadas com sucesso!', 'success');
-                    goToStep('next-steps');
-                } else {
-                    throw new Error(response.message || 'Erro desconhecido ao salvar.');
-                }
+            .then(() => {
+                showNotification('Respostas enviadas com sucesso!', 'success');
+                goToStep('next-steps');
+                submitButton.disabled = false;
             })
             .catch(error => {
                 console.error('Erro ao enviar dados para o Google Sheet:', error);
@@ -1168,12 +1306,6 @@
                 submitButton.disabled = false;
                 submitButton.innerHTML = 'Enviar Questionário <i class="fas fa-paper-plane"></i>';
             });
-        }
-        
-        function restartForm() {
-            formData = {};
-            currentStep = 'hero';
-            goToStep('hero');
         }
 
         function showNotification(message, type = 'info') {
